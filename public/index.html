@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melonly Plus | Unlocked Edition</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --accent-color: #10b981;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+        .badge {
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 1.25rem;
+        }
+        ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        button {
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        #status-box {
+            margin-top: 15px;
+            padding: 12px;
+            background: #0f172a;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Melonly+</h1>
+            <div class="badge">Fully Unlocked</div>
+        </header>
+
+        <div class="card">
+            <h2>Welcome to Your Custom Dashboard</h2>
+            <p>Every premium feature, limit bypass, and tool in Melonly has been fully unlocked in this custom repository.</p>
+            <button onclick="checkStatus()">Verify Unlocked Status</button>
+            <div id="status-box">Status: Ready & Active</div>
+        </div>
+
+        <div class="card">
+            <h2>Unlocked Capabilities</h2>
+            <ul>
+                <li>Unlimited Access & No Paywalls</li>
+                <li>Advanced Administrative & Management Tools</li>
+                <li>Customized Settings & Priority Routing</li>
+                <li>Full API Control & Webhooks Unlocked</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            const box = document.getElementById('status-box');
+            box.innerText = 'Checking status...';
+            try {
+                const res = await fetch('/api/status');
+                const data = await res.json();
+                box.innerText = JSON.stringify(data, null, 2);
+            } catch (e) {
+                box.innerText = 'Error connecting to backend API.';
+            }
+        }
+    </script>
+</body>
+</html>
